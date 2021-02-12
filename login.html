@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>
+Login Page
+        </title>
+        <script>
+            var x=0;
+            function getrandom() {
+               x = Math.floor((Math.random() * 10*2*3) + 10);
+              document.getElementById("demo").innerHTML = x;
+            }
+            var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+var username = document.getElementById("uname").value;
+var password = document.getElementById("pass").value;
+var capcha = document.getElementById("ck").value;
+if ( username == "hello" && password == "hello" && capcha == x){
+alert ("Login successfully");
+window.location = "welcome.html"; // Redirecting to other page.
+return false;
+}
+else{
+attempt --;// Decrementing by one.
+alert("You have left "+attempt+" attempt;");
+// Disabling fields after 3 attempts.
+if( attempt == 0){
+document.getElementById("uname").disabled = true;
+document.getElementById("pass").disabled = true;
+document.getElementById("ck").disabled = true;
+document.getElementById("bt1").disabled = true;
+document.getElementById("bt2").disabled = true;
+return false;
+}
+}
+}
+            </script>
+    </head>
+    <body>
+<div align ="center">
+    <h1>Student Login</h1>
+    Username <Input type="Text" class="uname" name="uname" id="uname"><br>
+    <br>Password <Input type ="password" class ="pass" name="pass" id="pass"><br>
+    <br>Verify number <Input type="number" class="vnumber" name="vnumber" id="ck"><br>
+   <br> <button  onclick="validate()" id="bt1" >Login</button>
+    <br>
+   <br> <button onclick="getrandom()" id="bt2">Generate Random Number </button>
+
+
+<p id="demo"></p>
+<p id="verify"></p>
+</div>
+    </body>
+</html>
